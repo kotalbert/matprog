@@ -2,7 +2,7 @@ function dd = day_diff(month1, day1, month2, day2)
 m15 = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 % checking for error imputs
-dates = [day1, day2, month1, month2]
+dates = [day1, day2, month1, month2];
 if length(dates) ~= 4, dd=-1; return; end
 if sum(dates <= 0) > 0, dd=-1; return; end;
 if ~isvectofints(dates), dd=-1; return; end;
