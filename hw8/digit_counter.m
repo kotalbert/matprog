@@ -3,7 +3,9 @@ function cn = digit_counter(filename)
 fid = fopen(filename, 'rt');
 
 if fid < 0
-    error('cannot open file');
+    cn = -1;
+    return;
+    %error('cannot open file');
 end
 
 cn = 0;
@@ -14,7 +16,7 @@ while ischar(line)
        cn = cn + is_digit(line(i));
     end
     line = fgets(fid);
-end;
+end
 fclose(fid);
 
 function isdig = is_digit(charin)
@@ -26,7 +28,7 @@ for i = 1:10
         isdig = 1;
         return;
     end
-end;
+end
 
 
 

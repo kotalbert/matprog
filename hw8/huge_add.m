@@ -28,7 +28,12 @@ end
 
 % Check if vector of legal characters
 function a_bool = is_legal_array(char_array_in)
-a_bool = 1; % Flag - character array of legal characters
+if ischar(char_array_in)
+    a_bool = 1; % Flag - character array of legal characters
+else
+    a_bool = 0;
+    return;
+end
 for i = 1:length(char_array_in)
     if is_legal_char(char_array_in(i)) ~= 1
         a_bool = 0; % Illegal character found - set flag to illegal
@@ -42,20 +47,20 @@ end
 % Return number of tens and reminder of mod 10
 function [char_tens, char_reminder] = digits_add(char1_in, char2_in, char3_in)
   
-    digit1 = str2num(char1_in);
-    digit2 = str2num(char2_in);
+    digit1 = str2double(char1_in);
+    digit2 = str2double(char2_in);
     
   % Function overloading
   if nargin == 2
     digit3 = 0;
   else
-    digit3 = str2num(char3_in);
+    digit3 = str2double(char3_in);
   end
   
   digit_sum = digit1 + digit2 + digit3;
   
   reminder = mod(digit_sum, 10);
-  tens = idivide(digit_sum, 10);
+  tens = floor(digit_sum/10);
   
   char_reminder = int2str(reminder);
   char_tens = int2str(tens);
